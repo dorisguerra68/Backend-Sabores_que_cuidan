@@ -1,0 +1,50 @@
+# ============================
+#   PYTHON / FASTAPI PROJECT
+# ============================
+
+# --- Entorno virtual ---
+venv/
+.venv/
+
+# --- Variables de entorno ---
+.env
+.env.*
+*.env
+
+# --- IDE / Editor ---
+.idea/
+.vscode/
+*.iml
+
+# --- Python cache ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# --- Build / Distribución ---
+build/
+dist/
+*.egg-info/
+
+# --- Logs ---
+*.log
+
+# --- Tests ---
+.coverage
+htmlcov/
+pytest_cache/
+
+# --- Herramientas ---
+.mypy_cache/
+.pytest_cache/
+.cache/
+
+# --- Docker ---
+*.pid
+*.seed
+*.pid.lock
+
+# --- Otros ---
+.DS_Store
+Thumbs.db
