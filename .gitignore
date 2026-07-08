@@ -15,6 +15,9 @@ venv/
 .idea/
 .vscode/
 *.iml
+# Alembic (Ignorar por ahora mientras estabilizamos Uvicorn)
+alembic/
+alembic.ini
 
 # --- Python cache ---
 __pycache__/
