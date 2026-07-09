@@ -1,20 +1,22 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
+from typing import Optional
 
 #se crea los campos comunes
 class TipoUsuarioBase(BaseModel):
     nombre: str
+    color: Optional[str] = None
 
-#crear esquema para crear tipo de usuario pra el frontend
-class TipoUsuario(TipoUsuarioBase):
-    pass
+#crea para responder
+class TipoUsuarioRead(TipoUsuarioBase):
+    id_tpu: int
 
-#crea la logica del cliente
+    model_config = ConfigDict(from_attributes=True)
+
+#crea la logica de creación hereda el nombre y color
 class TipoUsuarioCreate(TipoUsuarioBase):
     pass
 
-#crea para responder al cliente
-class TipoUsuarioResponse(TipoUsuarioBase):
-    id_tipo_usuario : int
+class TipoUsuarioUpdate(TipoUsuarioBase):
+    nombre: Optional[str]=None
+    color:Optional[str]=None
 
-    class config:
-        from_atributes: True

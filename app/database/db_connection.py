@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import declarative_base, sessionmaker
+from sqlalchemy.orm import  sessionmaker
 from app.core.config import config
+from  app.database.base_class import Base
 
 # 2. Configuración del motor de la base de datos con PostgreSQL
 engine = create_engine(
@@ -18,7 +19,7 @@ SessionLocal = sessionmaker(
 )
 
 # 4. Clase Base para que hereden todos tus modelos
-Base = declarative_base()
+
 
 # 5. Dependencia para inyectar la sesión en los endpoints de FastAPI
 def get_db():
