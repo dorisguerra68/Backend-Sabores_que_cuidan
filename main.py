@@ -1,16 +1,17 @@
-# This is a sample Python script.
-
-# Press Ctrl+F5 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from fastapi import FastAPI
+from app.core.config import config
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press F9 to toggle the breakpoint.
+from app.api.home_router import router as home_router
+from app.api.tipo_usuario_router import router as tipo_usuario_router
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+app = FastAPI(
+    title="Sabores que Cuidan API",
+    description="Backend para el control nutricional y glucémico",
+    version="1.0.0"
+)
+
+app.include_router(home_router)
+app.include_router(tipo_usuario_router)
