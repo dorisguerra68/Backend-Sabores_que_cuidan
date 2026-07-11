@@ -16,4 +16,4 @@ class ValorGlucemico(Base):
 
 
     # Como un rango de valor glucémico puede tener MUCHOS alimentos asociados, usamos List.
-    alimentos: Mapped[List["Alimento"]] = relationship(back_populates="valor_glucemico")
+    #alimentos: Mapped[List["Alimento"]] = relationship(back_populates="valor_glucemico")
