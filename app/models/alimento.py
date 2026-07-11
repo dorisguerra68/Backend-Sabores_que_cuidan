@@ -20,7 +20,7 @@ class Alimento(Base):
     indice_glucemico: Mapped[int] = mapped_column(Integer, nullable=False)
 
     #  Relación bidireccional con RegistroComida (Para cerrar el circuito con el archivo anterior)
-    registro_comida: Mapped[List["RegistroComida"]] = relationship(back_populates="alimento")
+    #registro_comida: Mapped[List["RegistroComida"]] = relationship(back_populates="alimento")
 
     # Una propiedad dinámica (¡Asegúrate de que tenga 4 espacios de sangría!)
     @property

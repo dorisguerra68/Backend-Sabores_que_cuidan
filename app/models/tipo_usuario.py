@@ -14,5 +14,5 @@ class TipoUsuario(Base):
 
 
     #  La otra mitad de la relación para que se avisen mutuamente
-    usuarios: Mapped[List["Usuario"]] = relationship(back_populates="tipo_usuario")
+   # usuarios: Mapped[List["Usuario"]] = relationship(back_populates="tipo_usuario")
 
