@@ -12,7 +12,7 @@ from app.database.base_class import Base
 if TYPE_CHECKING:
     from app.models.alimento import Alimento
 
-    from app.models.usuario import Usuario
+    from app.models.registro_usuario import Usuario
     from app.models.tipo_usuario import TipoUsuario
 
 # creamos las lista desplegable de la hora de comida
@@ -31,8 +31,7 @@ class RegistroComida(Base):
 
     id_alimento: Mapped[int] = mapped_column(ForeignKey('alimento.id_alimento'), nullable=False)
     # id_usuario: Mapped[int] = mapped_column(ForeignKey('usuario.id_usuario'), nullable=False)
-    # id_tpu: Mapped[int] = mapped_column(ForeignKey('tipo_usuario.id_tpu'), nullable=False)
-
+    
     fecha: Mapped[datetime] = mapped_column(DateTime, nullable=False)
     racion: Mapped[Decimal] = mapped_column(Numeric(6, 2), nullable=False)
     observacion: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
