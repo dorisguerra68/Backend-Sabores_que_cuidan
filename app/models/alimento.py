@@ -22,7 +22,7 @@ class Alimento(Base):
     #  Relación bidireccional con RegistroComida (Para cerrar el circuito con el archivo anterior)
     #registro_comida: Mapped[List["RegistroComida"]] = relationship(back_populates="alimento")
 
-    # Una propiedad dinámica (¡Asegúrate de que tenga 4 espacios de sangría!)
+    # Una propiedad dinámica, calculamos los valores de cada nivel glucemico
     @property
     def nivel_glucemico(self) -> str:
         if self.indice_glucemico <= 30:

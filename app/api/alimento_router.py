@@ -30,7 +30,7 @@ def obtener_alimento(id_alimento: int, db: Session = Depends(get_db)):
 # Crear un nuevo alimento
 @router.post("/", response_model=AlimentoRead, status_code=status.HTTP_201_CREATED)
 def crear_alimento(payload: AlimentoCreate, db: Session = Depends(get_db)):
-    # CORREGIDO: Se usa la variable 'resultado' de forma consistente
+   
     resultado = AlimentoController.create_alimento(db, payload)
 
     if resultado == "duplicado":

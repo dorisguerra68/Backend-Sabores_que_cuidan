@@ -17,7 +17,7 @@ class AlimentoRead(Alimento):
     id_alimento: int
     nivel_glucemico: str
 
-    # CONFIGURACIÓN CORREGIDA: Va dentro de AlimentoRead con 4 espacios de sangría
+
     model_config = ConfigDict(from_attributes=True)
 
 class AlimentoUpdate(Alimento):
