@@ -28,8 +28,7 @@ class RegistroComida(Base):
 
     # Claves foráneas (Físicas en PostgreSQL)
     id_alimento: Mapped[int] = mapped_column(ForeignKey('alimento.id_alimento'), nullable=False)
-    id_usuario: Mapped[int] = mapped_column(ForeignKey('registro_usuario.id_usuario'),
-                                            nullable=False)  # <-- Corregido al nuevo nombre de tabla
+    id_usuario: Mapped[int] = mapped_column(ForeignKey('registro_usuario.id_usuario'),nullable=False)
 
     fecha: Mapped[datetime] = mapped_column(DateTime, nullable=False)
     racion: Mapped[Decimal] = mapped_column(Numeric(6, 2), nullable=False)
