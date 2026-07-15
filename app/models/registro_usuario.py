@@ -2,7 +2,8 @@ import enum
 from datetime import date
 from decimal import Decimal
 from typing import List, Optional, TYPE_CHECKING
-from sqlalchemy import String, Date, Numeric, Integer, Enum
+from sqlalchemy import Enum
+from sqlalchemy import String, Date, Numeric, Integer
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.database.base_class import Base
 
@@ -27,7 +28,11 @@ class Usuario(Base):
     altura: Mapped[Optional[Decimal]] = mapped_column(Numeric(5, 2), nullable=True)
 
     tipo_persona: Mapped[tipoUsuario] = mapped_column(
-        Enum(tipoUsuario),
+        Enum(
+            tipoUsuario,
+            values_callable=lambda enum_cls: [e.value for e in enum_cls],
+            name="tipousuario"
+        ),
         nullable=False,
         default=tipoUsuario.SANO
     )
