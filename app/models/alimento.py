@@ -6,7 +6,6 @@ from app.database.base_class import Base
 
 # Se usa  el bloque TYPE_CHECKING de Python (que solo sirve para el autocompletado del IDE y no afecta la ejecución).
 if TYPE_CHECKING:
-    from app.models.valor_glucemico import ValorGlucemico
     from app.models.registro_comida import RegistroComida
 
 class Alimento(Base):
