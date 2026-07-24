@@ -17,7 +17,7 @@ class RegistroComidaBase(BaseModel):
 # 2. El esquema que usará el frontend para ENVIAR una nueva comida (Petición POST)
 # El frontend solo manda los IDs y los datos de la ingesta
 class RegistroComidaCreate(RegistroComidaBase):
-    id_usuario: int
+    id_usuario: Optional[int] = 1 
 
 
 # 3. Respuesta simple (Solo IDs)
