@@ -15,7 +15,7 @@ if TYPE_CHECKING:
 # Creamos la lista desplegable de la hora de comida
 class horaComidaEnum(str, enum.Enum):
     DESAYUNO = "Desayuno"
-    MEDIA_MANANA = "Media Manana"
+    MEDIA_MANANA = "Media Mañana"
     COMIDA = "Comida"
     MERIENDA = "Merienda"
     CENA = "Cena"

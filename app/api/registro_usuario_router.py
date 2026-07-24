@@ -15,7 +15,7 @@ router = APIRouter(
     tags=["usuario"],
 )
 
-# 1. Registrar un nuevo usuario
+#  Registrar un nuevo usuario
 @router.post("/", response_model=RegistroUsuarioRead, status_code=status.HTTP_201_CREATED)
 def crear_registro_usuario(payload: RegistroUsuarioCreate, db: Session = Depends(get_db)):
     try:
@@ -29,13 +29,13 @@ def crear_registro_usuario(payload: RegistroUsuarioCreate, db: Session = Depends
         )
 
 
-# 2. Obtener todos los usuarios
+#  Obtener todos los usuarios
 @router.get("/", response_model=List[RegistroUsuarioRead])
 def obtener_todos_los_registros(db: Session = Depends(get_db)):
     return RegistroUsuarioController.get_all_registro_usuario(db)
 
 
-# 3. Obtener un usuario por ID
+#  Obtener un usuario por ID
 @router.get("/{id_usuario}", response_model=RegistroUsuarioRead)
 def obtener_registro_por_id(id_usuario: int, db: Session = Depends(get_db)):
     usuario = RegistroUsuarioController.get_registro_usuario(db, id_usuario)
@@ -45,9 +45,28 @@ def obtener_registro_por_id(id_usuario: int, db: Session = Depends(get_db)):
             detail="El registro de usuario no existe."
         )
     return usuario
+# buscar usuario por su nombre completo
+# buscar usuario por su nombre completo
+@router.get("/buscar/{nombre_completo}", response_model=RegistroUsuarioRead)
+def obtener_registro_por_nombre_completo(nombre_completo: str, db: Session = Depends(get_db)):
+    # Normalizamos para evitar problemas de mayúsculas/minúsculas
+    nombre_completo = nombre_completo.lower()
+
+    usuario = db.query(Usuario).filter(
+        Usuario.nombre_completo.ilike(nombre_completo)
+    ).first()
+
+    if not usuario:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="El usuario no existe."
+        )
+
+    return usuario
 
 
-# 4. Eliminar un usuario
+
+#  Eliminar un usuario
 @router.delete("/{id_usuario}", status_code=status.HTTP_204_NO_CONTENT)
 def eliminar_registro_usuario(id_usuario: int, db: Session = Depends(get_db)):
     usuario = RegistroUsuarioController.get_registro_usuario(db, id_usuario)
@@ -59,7 +78,10 @@ def eliminar_registro_usuario(id_usuario: int, db: Session = Depends(get_db)):
 
     RegistroUsuarioController.eliminar_registro_usuario(db, usuario)
     return None
-# 5. Inicio de session
+
+
+
+#  Inicio de session
 @router.post("/login")
 def login_usuario(payload: LoginUsuario, db: Session = Depends(get_db)):
     try:
