@@ -12,12 +12,16 @@ class RegistroComidaBase(BaseModel):
     racion: Decimal
     hora_comida: horaComidaEnum
     observacion: Optional[str] = None
+    #añado el nuevo campo necesario para el impacto_glucémico
+    impacto_glucemico: str
 
 
 # 2. El esquema que usará el frontend para ENVIAR una nueva comida (Petición POST)
 # El frontend solo manda los IDs y los datos de la ingesta
 class RegistroComidaCreate(RegistroComidaBase):
-    id_usuario: Optional[int] = 1 
+    id_usuario: Optional[int] = 1  #modificado para que no me pida obligatorio el usuario
+    #id_rgtcomida: int
+
 
 
 # 3. Respuesta simple (Solo IDs)
@@ -33,10 +37,12 @@ class RegistroComidaResponse(RegistroComidaBase):
 # =====================================================================
 
 # Primero creamos el molde de cómo se verá el alimento dentro de la comida
+# se añade indíce glucémico para poder obtener la referencia visual
 class AlimentoEnComida(BaseModel):
     id_alimento: int
     nombre: str
     categoria: str
+    indice_glucemico: int
 
     model_config = ConfigDict(from_attributes=True)
 
