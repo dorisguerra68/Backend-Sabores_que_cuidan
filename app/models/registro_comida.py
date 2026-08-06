@@ -2,7 +2,7 @@ import enum
 from datetime import datetime
 from decimal import Decimal
 from typing import Optional, TYPE_CHECKING
-from sqlalchemy import Integer, Numeric, Text, ForeignKey, DateTime, Enum
+from sqlalchemy import Integer, Numeric, Text, ForeignKey, DateTime, Enum, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.database.base_class import Base
 
@@ -39,6 +39,9 @@ class RegistroComida(Base):
         Enum(horaComidaEnum),
         nullable=False
     )
+
+    # 🌟 NUEVA COLUMNA FÍSICA: Guarda el impacto calculado del alimento de forma persistente
+    impacto_glucemico: Mapped[str] = mapped_column(String(20), nullable=False, default="Bajo")
 
     # Relaciones virtuales (Lógica en SQLAlchemy)
     usuario: Mapped["Usuario"] = relationship(back_populates="registro_comida")
