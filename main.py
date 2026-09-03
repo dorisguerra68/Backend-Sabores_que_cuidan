@@ -35,7 +35,8 @@ app.add_middleware(
         "https://frontend-sabores-que-cuidan-alpha.vercel.app"
 
     ],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
